@@ -1,0 +1,204 @@
+@import url(webfont-ubuntu-400-300-100.css);
+@import url(webfont-ubuntu-mono-400-700-400italic.css);
+
+body {
+  font-family: 'Ubuntu';
+  font-weight: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ubuntu';
+  font-weight: 300;
+  margin-top: 0;
+}
+
+h1 {
+  margin-top: 0.5em;
+}
+
+h2 {
+  font-size: 140%;
+  line-height: 150%;
+}
+h3 {
+  font-size: 120%;
+  line-height: 140%;
+}
+h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+.title h3 {
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+
+
+li {
+  font-size: 120%;
+  line-height: 160%;
+}
+
+p {
+font-size: 120%;
+  line-height: 140%;
+}
+
+.singleimg .middlebelowheader {
+  text-align: center;
+}
+
+.singleimg img {
+  max-width: 90%;
+  max-height: 600px;
+  /*border: 2px solid #ddd;*/
+}
+table {
+  margin: 0 auto 0.8em;
+  border-collapse: collapse;
+}
+td, th {
+  border: 1px solid #ddd;
+  padding: 0.3em 0.5em;
+}
+
+.bgheader h1 {
+  background-color: rgba(0, 0, 0, 0.9);
+  opacity: 50%;
+  padding: 0.5em;
+  color: white;
+  border-radius: .5em;
+}
+.middlebelowheader {
+  /* This fixed size height was found to work well with the slide
+     scaling mechanism of remark.js:
+   */
+  height: 500px;
+  display: table-cell;
+  vertical-align: middle;
+}
+.widespace h2 {
+  line-height: 200%;
+}
+.big .remark-code  {
+  font-size: 200%;
+}
+.remark-code, .remark-inline-code {
+   font-family: 'Ubuntu Mono';
+}
+
+.medium .remark-code  {
+  font-size: 120%;
+}
+
+.mmedium .remark-code  {
+  font-size: 99%;
+}
+
+.affiliations img {
+  position: relative;
+  top:-50px;
+  max-width: 40%;
+  margin: 1em;
+  vertical-align: middle;
+}
+
+.logo{
+  display:inline-block;
+  vertical-align:middle;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.large {
+  font-size: 120%;
+}
+
+.small {
+  font-size: 120%;
+}
+
+.credits {
+  font-style: italic;
+  font-size: 70%;
+}
+
+.bunchoflogos img {
+  max-width: 30%;
+  padding: 1em;
+}
+
+.bunchoflogos p {
+  text-align: center;
+  width: 750px;
+}
+
+a:visited {
+  color: blue;
+}
+
+.inverse {
+    background: #272822;
+    color: #f3f3f3;
+    text-shadow: 0 0 20px #333;
+    }
+
+.align-right {
+    text-align: right;
+    }
+
+.red { color: #fa0000; }
+.blue { color: #0000ff; }
+.darkred {color: #C10000;}
+
+
+.layout-table table{
+  border: none;
+}
+
+.layout-table td, th {
+  border: 0px solid #ddd;
+  padding: 0.3em 0.5em;
+}
+
+/*
+.remark-slide-container {transition: opacity 0.5s ease-out;opacity: 0;}
+.remark-visible {transition: opacity 0.5s ease-out;opacity: 1;}
+*/
+
+/* Two-column layout */
+.left-column {
+  /*color: #777;*/
+  width: 50%;
+  /*height: 92%;*/
+  float: left;
+}
+
+.right-column {
+  width: 50%;
+  float: right;
+  /*padding-top: 1em;*/
+}
+
+
+.sampling  {
+  border-collapse:collapse;
+  border-spacing:0;
+  vertical-align:top
+}
+
+.sampling tr td {
+  width: 1em;
+}
+
+.sampling .selected {
+  background-color:#ffce93;
+  vertical-align:top
+}
+
+.tight p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
