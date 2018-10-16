@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="img/slides.css">
+      <link rel="stylesheet" href="./img/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      #slideshow .slide .content .cols.two .col { width: 48%; }
+    </style>
+-->
+  <style>
+   .section_background {background-color:#c2c444; color: #fff}
+   .day_background {background-color:#ececec; color: #000}
+  </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Data wrangling with Python
+## First steps with Pandas
+
+URFIST de Bordeaux, 16-17 October 2018
+
+Joris Van den Bossche, Stijn Van Hoey
+
+???
+
+https://github.com/jorisvandenbossche/DS-python-data-analysis
+
+---
+
+### Joris Van den Bossche
+
+<a href="https://twitter.com/jorisvdbossche"><i class="fa fa-twitter" aria-hidden="true"></i> jorisvdbossche</a>,
+<a href="https://github.com/jorisvandenbossche"><i class="fa fa-github" aria-hidden="true"></i> jorisvandenbossche</a><br>
+
+.center[
+![:scale 75%](./img/work_joris_1.png)]
+
+.footnote[
+https://team.inria.fr/parietal/18-2/paris-saclay-cds/
+]
+
+
+<!-- 
+
+### Stijn Van Hoey
+
+<a href="https://twitter.com/svanhoey"><i class="fa fa-twitter" aria-hidden="true"></i> SVanHoey</a>,
+<a href="https://github.com/stijnvanhoey"><i class="fa fa-github" aria-hidden="true"></i> stijnvanhoey</a>
+
+.center[
+![:scale 75%](./img/work_stijn_1.png)]
+
+.footnote[
+https://lifewatch.inbo.be/blog/
+]
+
+class: center, middle
+
+<iframe src="https://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e" height="600px" width="800px"></iframe> 
+
+-->
+
+---
+class: middle, section_background
+
+# Introduction
+
+
+---
+class: center, middle
+
+![:scale 100%](./img/datacleaning1.jpg)
+
+---
+class: center, middle
+
+![:scale 100%](./img/datacleaning2.jpg)
+
+
+---
+class: center, middle
+
+# Why python?
+
+---
+class: center, middle
+
+# Python is...
+
+---
+
+## …OPEN SOURCE
+
+<br><br>
+
+* No license costs!
+
+---
+
+## …READABLE
+
+<br><br>
+
+* It's easy to learn, easy to read and fast to develop
+* Many scientists are not professional programmers
+
+---
+
+## …WIDESPREAD
+
+<br><br>
+
+* Python is one of the fastest growing languages for data science
+* Large world-wide community ensures a large variety of **available tools** and **fast development**
+* Used in **scientific** and non-scientific institutes <br> (Google, NASA, ESRI, VMM,...)
+* Python is a standard in GIS, machine learning, ... <br> (commercial and non-commercial tools)
+* **Multiplatform** (linux, windows,…)
+
+---
+class: center
+
+![:scale 90%](https://zgab33vy595fw5zq-zippykid.netdna-ssl.com/wp-content/uploads/2017/09/growth_major_languages-1-1024x878.png)
+
+https://stackoverflow.blog/2017/09/06/incredible-growth-python/
+
+---
+class: center
+
+![:scale 75%](https://stackoverflow.blog/wp-content/uploads/2017/09/related_tags_over_time-1-1024x1024.png)
+
+https://stackoverflow.blog/2017/09/14/python-growing-quickly/
+---
+
+## …WIDESPREAD
+
+<br><br>
+
+* Python is one of the fastest growing languages for data science
+* Large world-wide community ensures a large variety of **available tools** and **fast development**
+* Used in **scientific** and non-scientific institutes <br> (Google, NASA, ESRI, VMM,...)
+* Python is a standard in GIS, machine learning, ... <br> (commercial and non-commercial tools)
+* **Multiplatform** (linux, windows,…)
+
+---
+
+## …MULTI-FUNCTIONAL
+
+<br><br>
+
+* Python is used for many different problems, also beyond scientific computing (e.g. also for the web)
+* Research and development: the python *scientific ecosystem*
+* Great as ducttape/glue
+* **Automation** of time-consuming returning tasks
+* Easy to interface with other languages, in particular C and C++.  
+
+---
+
+## ... The Holy Grail ? No!
+
+<br><br>
+* Commercial packages give specific support  and more direct help-functions (cfr. MATLAB)
+* Commercial packages can be more client-friendly
+* For hard number-crunching, NOT the fastest solution
+* R, Fortran, C++ etc are also ‘widespread’, so python is just a language amongst the others
+* Risk of getting lost in the forest/flood of ‘useful packages’
+
+
+---
+
+# What is python?
+
+<br><br>
+
+* General purpose programming language
+* Interpreted
+* Dynamic typed
+* Interactive usage
+* Reference implemenation (CPython) largely written in C
+
+
+???
+
+- an *interpreted* (as opposed to *compiled*) language. Contrary to e.g.
+  C or Fortran, one does not compile Python code before executing it. In
+  addition, Python can be used **interactively**: many Python
+  interpreters are available, from which commands and scripts can be
+  executed.  
+- a free software released under an **open-source** license: Python can
+  be used and distributed free of charge, even for building commercial
+  software.  
+- **multi-platform**: Python is available for all major operating
+  systems, Windows, Linux/Unix, MacOS X, most likely your mobile phone
+  OS, etc.  
+- a very readable language with clear non-verbose syntax  
+- a language for which a large variety of high-quality packages are
+  available for various applications, from web frameworks to scientific
+  computing.  
+- a language very easy to interface with other languages, in particular C
+  and C++.  
+- Some other features of the language are illustrated just below. For
+  example, Python is an object-oriented language, with dynamic typing
+  (the same variable can contain objects of different types during the
+  course of a program).  
+
+
+
+---
+class: center, middle
+
+# Python's scientific ecosystem
+
+
+#### ## Thanks to Jake VanderPlas for the figure
+
+
+---
+class: center, middle, bgheader
+background-image: url(./img/JakeVdP-ecosystem1.svg)
+background-size: cover
+
+---
+count: false
+class: center, middle, bgheader
+background-image: url(./img/JakeVdP-ecosystem2.svg)
+background-size: cover
+
+---
+count: false
+class: center, middle, bgheader
+background-image: url(./img/JakeVdP-ecosystem3.svg)
+background-size: cover
+
+---
+count: false
+class: center, middle, bgheader
+background-image: url(./img/JakeVdP-ecosystem4.svg)
+background-size: cover
+
+---
+count: false
+class: center, middle, bgheader
+background-image: url(./img/JakeVdP-ecosystem5.png)
+background-size: cover
+
+---
+
+# And many more tools
+
+<br>
+
+**Machine learning**: tensorflow, pytorch, keras, chainer, ...
+
+**Performance**: Numba, Cython, Numexpr, C/Fortram wrappers, ...
+
+**Visualisation**: Bokeh, Seaborn, Plotnine, Altair, Plotly, Mayavi, HoloViews, ...
+
+**Data structures and parallel/distributed computation**: Xarray, Dask, Distributed, Cupy, ...
+
+Specialized packages in many **scientific fields**: astronomy, natural language processing, image processing, geospatial, ...
+
+**Packaging and distribution**: pip/wheels, conda, Anaconda, Canopy, ...
+
+
+
+
+---
+class: middle, section_background
+
+# Installing Python
+
+---
+
+# Installing Python
+<br>
+We **recommend Anaconda Distribution**, a Python distribution (= Python + most used packages) that targets (data) scientists: https://www.anaconda.com/download/
+
+But alternatives: download from python.org/downloads/ and install packages with `pip`, other distributions such as Enthought Canopy, ..
+
+The Anaconda Distribution comes with the **conda package manager**
+
+---
+
+# Conda
+<br>
+### Why using conda?
+
+- Consistent package manager across Windows, Mac and Linux
+- Many precompiled packages available
+- Less problems with installation!
+
+--
+
+### Why different environments?
+
+- Manage the dependencies of a specific project/paper/group/...
+- You can install different version of Python and other packages alongside on your computer
+- Easily share environments with other
+
+
+---
+## Small overview of conda commands
+
+Creating a new environment:
+
+```
+conda create -n my_env python=3.5 pandas
+
+# or from environment file
+conda env create -f environment.yml
+```
+
+Activating an environment:
+
+```
+conda activate my_env
+```
+
+Install a new package:
+
+```
+conda install matplotlib     # if not working, try: pip install ...
+```
+
+
+List all installed packages: `conda list`
+
+List all your environments: `conda info -e`
+
+See the docs: http://conda.pydata.org/docs/using/index.html
+
+---
+class: center, middle
+
+### Keep track of your python ecosystem <br>with an  `environment.yml`
+<br><br>
+
+```
+conda env export > environment.yml
+```
+
+---
+class: middle, section_background
+
+# Working with Python
+
+---
+
+## IPython console
+
+<br>
+.center[![:scale 75%](./img/ipython.png)]
+
+---
+
+## Interactive Development Environment (IDE)
+<br>
+* [**Spyder**](https://pythonhosted.org/spyder/) is shipped with Anaconda. The familiar environment for Matlab/Rstudio-users...
+* [**PyCharm**](https://www.jetbrains.com/pycharm/): Popular for web-development and Django applications, powerful when doing 'real' development (packages, libraries, software)
+* [Eclipse + **pyDev plugin**](http://www.pydev.org/): If you like working in Eclipse, just add the python environment
+* [**VS Code**](https://code.visualstudio.com/): new cool kid in town
+* ...
+
+---
+
+## Jupyter Notebook
+<small>(*previously called IPython notebook*)</small>
+
+**Jupyter notebook** provides an **interactive** scripting environment that
+interleaves text (markdown), code and output.<br>
+Ideal for exploration, prototyping, tutorials, presentation and communication of results,
+...
+
+.center[![:scale 70%](./img/notebook.png)]
+
+--
+
+ ...the stuff we're dealing with in this course!
+
+
+---
+class: middle, day_background
+
+# Overview of the first day
+
+Remainder of the morning:
+
+* Introduction to Jupyter notebook / Spyder
+* Recap on Python and numpy
+
+Afternoon:
+
+* Introduction to Pandas
+
+---
+class: middle, center
+
+ask for help
+
+![:scale 60%](./img/postit.jpg)
+
+list your never-to-forget commands
+
+
+---
+class: middle, day_background
+
+# Overview of the second day
+
+* Scipy, pandas
+* Case study
+* Show visualisation landscape, big data / machine learning
+
+---
+class: center, middle
+
+# How are you feeling?
+
+![:scale 100%](http://esq.h-cdn.co/assets/15/51/980x490/landscape-1450137389-john-cleese.JPG)
+
+
+### TODO: update LINK
+
+Please fill in the questionnaire!
+
+---
+class: center, middle
+
+# Closing notes
+
+---
+class: center, middle
+
+# Python's scientific ecosystem
+
+
+#### ## Thanks to Jake VanderPlas for the figure
+
+
+---
+class: center, middle, bgheader
+background-image: url(./img/JakeVdP-ecosystem1.svg)
+background-size: cover
+
+---
+count: false
+class: center, middle, bgheader
+background-image: url(./img/JakeVdP-ecosystem2.svg)
+background-size: cover
+
+---
+count: false
+class: center, middle, bgheader
+background-image: url(./img/JakeVdP-ecosystem3.svg)
+background-size: cover
+
+---
+count: false
+class: center, middle, bgheader
+background-image: url(./img/JakeVdP-ecosystem4.svg)
+background-size: cover
+
+---
+count: false
+class: center, middle, bgheader
+background-image: url(./img/JakeVdP-ecosystem5.png)
+background-size: cover
+
+---
+
+# And many more tools
+
+<br>
+
+**Machine learning**: tensorflow, pytorch, keras, chainer, ...
+
+**Performance**: Numba, Cython, Numexpr, C/Fortram wrappers, ...
+
+**Visualisation**: Bokeh, Seaborn, Plotnine, Altair, Plotly, Mayavi, HoloViews, ...
+
+**Data structures and parallel/distributed computation**: Xarray, Dask, Distributed, Cupy, ...
+
+Specialized packages in many **scientific fields**: astronomy, natural language processing, image processing, geospatial, ...
+
+**Packaging and distribution**: pip/wheels, conda, Anaconda, Canopy, ...
+
+
+---
+class: center, middle
+
+###Reading advice
+
+[Good Enough Practices in Scientific Computing](https://arxiv.org/pdf/1609.00037v1.pdf)
+
+> "*However, while most scientists are careful to validate their laboratory and field equipment, most do not know how reliable their software is*"
+
+
+---
+class: center, middle
+
+## Good luck!
+
+![](http://www.backwaterreptiles.com/images/pythons/angolan-python-for-sale.jpg)
+
+
+    </textarea>
+<!--    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+</script>-->
+    <script src="img/remark.min.js" type="text/javascript">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+    <script>
+        remark.macros.scale = function (percentage) {
+          var url = this;
+          return '<img src="' + url + '" style="width: ' + percentage + '" />';
+      };
+      var slideshow = remark.create();
+    </script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
