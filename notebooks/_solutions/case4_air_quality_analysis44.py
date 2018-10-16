@@ -1,3 +1,3 @@
-subset = data['2009-01'].copy()
-subset["weekday"] = subset.index.weekday
-subset = subset[subset['weekday'].isin([0, 6])]
+# add a weekday column
+data_daily['weekday'] = data_daily.index.weekday
+data_daily.head()

@@ -1,1 +1,2 @@
-survey_data.groupby("name").size().nlargest(8)
+fig, ax = plt.subplots(figsize=(8,8))
+sns.heatmap(species_per_plot, ax=ax, cmap='Reds')

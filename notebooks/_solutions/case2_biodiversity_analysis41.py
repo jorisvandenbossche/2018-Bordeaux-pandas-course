@@ -1,1 +1,1 @@
-merriami = survey_data[survey_data["name"] == "Dipodomys merriami"]
+month_evolution = subsetspecies.groupby("name").resample('M', on='eventDate').size()

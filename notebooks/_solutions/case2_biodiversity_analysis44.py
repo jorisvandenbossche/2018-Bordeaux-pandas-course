@@ -1,2 +1,1 @@
-subsetspecies = survey_data[survey_data["name"].isin(['Dipodomys merriami', 'Dipodomys ordii',
-                                                      'Reithrodontomys megalotis', 'Chaetodipus baileyi'])]
+count_weekday_years = survey_data.groupby([survey_data["eventDate"].dt.year, survey_data["eventDate"].dt.dayofweek]).size().unstack()

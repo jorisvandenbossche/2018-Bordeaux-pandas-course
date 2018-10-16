@@ -1,4 +1,3 @@
-fig, ax = plt.subplots()
-merriami.groupby(merriami['eventDate'].dt.year).size().plot(ax=ax)
-ax.set_xlabel("")
-ax.set_ylabel("number of occurrences")
+year_evolution = survey_data.groupby("taxa").resample('A', on='eventDate').size()
+species_evolution = year_evolution.unstack(level=0)
+axs = species_evolution.plot(subplots=True, figsize=(16, 8), sharey=False)

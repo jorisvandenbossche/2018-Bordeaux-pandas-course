@@ -1,1 +1,1 @@
-r_species = survey_data[survey_data['taxa'].str.lower().str.startswith('ro')]
+merriami = survey_data[survey_data["name"] == "Dipodomys merriami"]

@@ -1,4 +1,7 @@
-heatmap_prep_plotnine = survey_data.groupby([survey_data['eventDate'].dt.year, 
-                                             survey_data['eventDate'].dt.month]).size()
-heatmap_prep_plotnine.index.names = ["year", "month"]
-heatmap_prep_plotnine = heatmap_prep_plotnine.reset_index(name='count')
+# Alternative
+#survey_data['year'] = survey_data['eventDate'].dt.year
+#survey_data['month'] = survey_data['eventDate'].dt.month
+
+#heatmap_prep = survey_data.reset_index().pivot_table(index='year',
+#                                                     columns='month',
+#                                                     values="occurrenceID", aggfunc='count')

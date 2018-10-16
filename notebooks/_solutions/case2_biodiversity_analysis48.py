@@ -1,5 +1,3 @@
-(pn.ggplot(month_evolution.reset_index(name='count'), pn.aes(x='eventDate', y='count', color='name'))
-    + pn.geom_line()
-    + pn.facet_wrap('name', nrow=4)
-    + pn.theme_light()
-)
+fig, ax = plt.subplots()
+count_weekday_years.median(axis=0).plot(kind='barh', ax=ax, color='#66b266')
+xticks = ax.set_yticklabels(['Monday', 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday", "Sunday"])

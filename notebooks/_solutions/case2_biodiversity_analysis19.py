@@ -1,1 +1,1 @@
-heatmap_prep_sns = heatmap_prep_plotnine.pivot_table(index='year', columns='month', values='count')
+survey_data['name'] = survey_data['genus'] + ' ' + survey_data['species']

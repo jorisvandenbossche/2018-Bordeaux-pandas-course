@@ -1,6 +1,4 @@
-# with plotnine
-data_tidy_subset = data_tidy[(data_tidy['datetime'] >= "2011-01") & (data_tidy['datetime'] < "2011-09")]
-
-(pn.ggplot(data_tidy_subset, pn.aes(x='station', y='no2'))
-    + pn.geom_violin()
-    + pn.ylab("NO$_2$ concentration (µg/m³)"))
+# with wide table
+fig, ax = plt.subplots()
+sns.violinplot(data=data['2011-01': '2011-08'], palette="GnBu_d", ax=ax)
+ax.set_ylabel("NO$_2$ concentration (µg/m³)")

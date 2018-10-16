@@ -1,4 +1,2 @@
-fig, ax = plt.subplots()
-merriami.groupby(merriami['eventDate'].dt.year).size().plot(ax=ax)
-ax.set_xlabel("")
-ax.set_ylabel("number of occurrences")
+species_evolution = month_evolution.unstack(level=0)
+axs = species_evolution.plot(subplots=True, figsize=(14, 8), sharey=True)
